@@ -15,9 +15,9 @@ services:
       - 8000:8000
     environment:
       - SPLUNK_START_ARGS=--accept-license
-      - SPLUNK_PASSWORD="Ir0n1234!@#$"
+      - SPLUNK_PASSWORD=changeme
     volumes:
       - ./splunk/inputs/:/opt/splunk/etc/apps/search/local/
-      - ../snmptrapd/snmp-traps:/opt/splunk/var/logs/
+      - ./snmptrapd/snmp-traps:/opt/splunk/var/logs/
     depends_on:
       - snmptrapd
