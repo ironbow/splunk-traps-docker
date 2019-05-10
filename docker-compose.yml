@@ -18,5 +18,6 @@ services:
       - SPLUNK_PASSWORD="Ir0n1234!@#$"
     volumes:
       - ./splunk/inputs/:/opt/splunk/etc/apps/search/local/
+      - ../snmptrapd/snmp-traps:/opt/splunk/var/logs/
     depends_on:
       - snmptrapd
