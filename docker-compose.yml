@@ -1,0 +1,22 @@
+version: '2'
+services:
+  snmptrapd:
+    restart: always
+    build: Dockerfile
+    context: ./snmptrapd
+    ports:
+      - 162:162/udp
+    volumes:
+      - ./snmp-traps/:/var/log/
+  splunk:
+    image: splunk/splunk:latest
+    ports:
+      - 8515:8515
+      - 8000:8000
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD="Ir0n1234!@#$"
+    volumes:
+      - ./splunk/inputs/:/opt/splunk/etc/apps/search/local/
+    depends_on:
+      - snmptrapd
