@@ -1,0 +1,2 @@
+# Ignore log files of SNMP Traps
+snmp-traps/*
