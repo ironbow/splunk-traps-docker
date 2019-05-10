@@ -1,13 +1,13 @@
 version: '2'
 services:
   snmptrapd:
-    restart: always
-    build: Dockerfile
-    context: ./snmptrapd
+    build:
+      context: ./snmptrapd
     ports:
       - 162:162/udp
     volumes:
       - ./snmp-traps/:/var/log/
+    restart: always
   splunk:
     image: splunk/splunk:latest
     ports:
